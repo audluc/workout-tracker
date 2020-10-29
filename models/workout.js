@@ -16,6 +16,7 @@ const workoutSchema= new mongoose.Schema(
           virtuals:true
       }}
 )
+//virtual exercises/total exercise
 workoutSchema.virtual("totalDuration").get(function(){
     return this.exercises.reduce(function(total, exercise){
         return total + exercise.duration
