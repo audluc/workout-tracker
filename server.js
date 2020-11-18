@@ -1,7 +1,7 @@
 //linking to express and mongoose. Localhost
 const express = require("express");
 const mongoose = require("mongoose");
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -20,9 +20,7 @@ mongoose.connect(
 
 app.use(require("./routes/apiRoutes"));
 app.use(require("./routes/htmlRoutes"));
-db.once("open", function () {
-  console.log("console log connected to mongo");
   app.listen(PORT, function () {
     console.log("we are running on port " + PORT);
   });
-});
+
